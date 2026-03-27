@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deque Benefits Summary 2025–2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:       #2e5f7a;
+    --plum:       #b25295;
+    --red:        #cc463b;
+    --amber:      #f3a326;
+    --cream:      #f6f3ee;
+    --dark:       #2a2826;
+    --card:       #ffffff;
+    --border:     #e8e2d9;
+    --muted:      #6b6457;
+    --font-head:  'Barlow Condensed', sans-serif;
+    --font-body:  'Barlow', sans-serif;
+    --radius:     14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  /* ===================== HERO ===================== */
+  .hero {
+    background: var(--dark);
+    padding: 60px 48px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 5% 80%, rgba(46,95,122,0.55) 0%, transparent 55%),
+      radial-gradient(ellipse at 95% 10%, rgba(178,82,149,0.35) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 110%, rgba(243,163,38,0.2) 0%, transparent 45%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  .hero-logo {
+    flex-shrink: 0;
+  }
+
+  .hero-logo img {
+    height: 56px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+  }
+
+  .hero-divider {
+    width: 2px;
+    height: 80px;
+    background: rgba(255,255,255,0.2);
+    flex-shrink: 0;
+  }
+
+  .hero-text { flex: 1; }
+
+  .hero-eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 10px;
+  }
+
+  .hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.0;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--amber);
+  }
+
+  .hero p {
+    color: rgba(255,255,255,0.6);
+    font-size: 1rem;
+    max-width: 420px;
+    line-height: 1.65;
+  }
+
+  /* ===================== STATS BAR ===================== */
+  .stats-bar {
+    background: var(--teal);
+    padding: 0;
+  }
+
+  .stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .stat-item {
+    color: #fff;
+    padding: 28px 24px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    position: relative;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-item .num {
+    font-family: var(--font-head);
+    font-size: 2.1rem;
+    font-weight: 900;
+    display: block;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--amber);
+  }
+
+  .stat-item .lbl {
+    font-size: 0.72rem;
+    font-weight: 600;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-top: 5px;
+    display: block;
+  }
+
+  /* ===================== LAYOUT ===================== */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 72px 48px;
+  }
+
+  .section-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--plum);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: var(--font-head);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 800;
+    color: var(--dark);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin-bottom: 36px;
+    line-height: 1.1;
+  }
+
+  .grid { display: grid; gap: 18px; }
+  .grid-3 { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .grid-2 { grid-template-columns: repeat(auto-fill, minmax(480px, 1fr)); }
+
+  /* ===================== CARDS ===================== */
+  .card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 26px 28px;
+    transition: transform 0.18s, box-shadow 0.18s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 44px rgba(42,40,38,0.1);
+  }
+
+  .card-accent {
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .accent-teal   { background: var(--teal); }
+  .accent-plum   { background: var(--plum); }
+  .accent-red    { background: var(--red); }
+  .accent-amber  { background: var(--amber); }
+
+  .card-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 14px;
+  }
+
+  .icon-teal  { background: rgba(46,95,122,0.1); }
+  .icon-plum  { background: rgba(178,82,149,0.1); }
+  .icon-amber { background: rgba(243,163,38,0.12); }
+  .icon-red   { background: rgba(204,70,59,0.1); }
+
+  .card h3 {
+    font-family: var(--font-head);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--dark);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+
+  .card p strong { color: var(--dark); }
+  .card p:last-child { margin-bottom: 0; }
+
+  /* ===================== PILLS ===================== */
+  .pill {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 100px;
+  }
+
+  .pill-teal   { background: rgba(46,95,122,0.1);  color: var(--teal); }
+  .pill-plum   { background: rgba(178,82,149,0.1); color: var(--plum); }
+  .pill-amber  { background: rgba(243,163,38,0.12); color: #a06f10; }
+  .pill-red    { background: rgba(204,70,59,0.1);  color: var(--red); }
+
+  /* ===================== TABLES ===================== */
+  .rates-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 14px;
+    font-size: 0.84rem;
+  }
+
+  .rates-table th {
+    text-align: left;
+    padding: 7px 10px;
+    background: rgba(46,95,122,0.07);
+    color: var(--muted);
+    font-weight: 700;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+
+  .rates-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--border);
+    color: var(--dark);
+  }
+
+  .rates-table tr:last-child td { border-bottom: none; }
+
+  .hl-row td {
+    font-weight: 700;
+    color: var(--teal);
+    background: rgba(46,95,122,0.04);
+  }
+
+  /* ===================== PTO SPECIAL ===================== */
+  .pto-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1.5px solid var(--border);
+  }
+
+  .pto-block {
+    padding: 28px 24px;
+    text-align: center;
+    background: var(--card);
+    border-right: 1.5px solid var(--border);
+  }
+
+  .pto-block:last-child { border-right: none; }
+
+  .pto-big {
+    font-family: var(--font-head);
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .pto-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .pto-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* ===================== HOLIDAY STRIP ===================== */
+  .holiday-strip {
+    display: flex;
+    gap: 18px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .holiday-chip {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 22px;
+    flex: 1;
+    min-width: 160px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .holiday-chip-num {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .holiday-chip-text {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.35;
+  }
+
+  /* ===================== DIVIDER ===================== */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 48px;
+  }
+
+  /* ===================== FOOTER ===================== */
+  .footer {
+    background: var(--dark);
+    padding: 44px 48px;
+    text-align: center;
+    color: rgba(255,255,255,0.45);
+    font-size: 0.84rem;
+    line-height: 1.7;
+  }
+
+  .footer strong { color: rgba(255,255,255,0.8); }
+  .footer a { color: var(--amber); text-decoration: none; }
+
+  @media (max-width: 700px) {
+    .hero-inner { flex-direction: column; gap: 28px; }
+    .hero-divider { display: none; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .grid-2 { grid-template-columns: 1fr; }
+    .pto-grid { grid-template-columns: 1fr; }
+    .pto-block { border-right: none; border-bottom: 1.5px solid var(--border); }
+    .pto-block:last-child { border-bottom: none; }
+    .container { padding: 48px 20px; }
+    .divider { margin: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-logo">
+      <img src="deque-logo.png" alt="Deque" onerror="this.style.display='none'">
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-text">
+      <span class="hero-eyebrow">Full-Time Employee Benefits</span>
+      <h1>Your Benefits,<br><em>Better Than Ever.</em></h1>
+      <p>Everything Deque provides to support your health, wealth, growth, and happiness &mdash; all in one place.</p>
+    </div>
+  </div>
+</header>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="num">15</span>
+      <span class="lbl">Days Vacation</span>
+    </div>
+    <div class="stat-item">
+      <span class="num">10</span>
+      <span class="lbl">Days Sick Leave</span>
+    </div>
+    <div class="stat-item">
+      <span class="num">100%</span>
+      <span class="lbl">Employee Medical</span>
+    </div>
+    <div class="stat-item">
+      <span class="num">3%</span>
+      <span class="lbl">401(k) Match</span>
+    </div>
+    <div class="stat-item">
+      <span class="num">$4K</span>
+      <span class="lbl">Referral Bonus</span>
+    </div>
+  </div>
+</div>
+
+<!-- TIME OFF -->
+<div class="container">
+  <span class="section-eyebrow">Time Away From Work</span>
+  <h2 class="section-title">Rest, Recharge &amp; Celebrate</h2>
+
+  <div class="pto-grid">
+    <div class="pto-block">
+      <span class="pto-big" style="color:var(--teal)">15</span>
+      <span class="pto-label">Days Vacation</span>
+      <p class="pto-desc">Accrued monthly throughout the year. Each year on your work anniversary, you earn an additional day &mdash; up to your 5-year anniversary.</p>
+    </div>
+    <div class="pto-block">
+      <span class="pto-big" style="color:var(--plum)">10</span>
+      <span class="pto-label">Days Sick Leave</span>
+      <p class="pto-desc">Frontloaded upon hire and resets every January 1st. Use it for illness, medical appointments, and caring for loved ones.</p>
+    </div>
+    <div class="pto-block">
+      <span class="pto-big" style="color:var(--amber)">2</span>
+      <span class="pto-label">Floating Holidays</span>
+      <p class="pto-desc">Frontloaded upon hire and resets every January 1st. Use them any time, any reason &mdash; no need to tie them to a company holiday.</p>
+    </div>
+  </div>
+
+  <div class="holiday-strip">
+    <div class="holiday-chip">
+      <span class="holiday-chip-num" style="color:var(--teal)">9</span>
+      <span class="holiday-chip-text">Paid Company Holidays</span>
+    </div>
+    <div class="holiday-chip">
+      <span class="holiday-chip-num" style="color:var(--plum)">2</span>
+      <span class="holiday-chip-text">Early Release Days</span>
+    </div>
+    <div class="holiday-chip" style="flex:2">
+      <span style="font-size:1.5rem; flex-shrink:0;">👶</span>
+      <div>
+        <span class="holiday-chip-text" style="display:block">Baby Bonding Leave</span>
+        <span style="font-size:0.82rem; color:var(--muted); font-weight:400">Up to 4 weeks paid for birth, adoption, or foster placement &mdash; must be used within 12 months</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- HEALTH INSURANCE -->
+<div class="container">
+  <span class="section-eyebrow">Health &amp; Wellness</span>
+  <h2 class="section-title">Coverage That Actually Covers You</h2>
+
+  <div class="grid grid-2">
+
+    <!-- MEDICAL -->
+    <div class="card" style="grid-column: 1 / -1;">
+      <div class="card-accent accent-teal"></div>
+      <div style="padding-left:8px">
+        <div class="card-icon icon-teal">🏥</div>
+        <h3>Medical Insurance &mdash; UHC or Surest</h3>
+        <p>Choose from three <strong>$0 deductible</strong> plans. All use the Choice Plus national network.</p>
+        <table class="rates-table">
+          <thead>
+            <tr>
+              <th>Coverage Level</th>
+              <th>UHC PPO w/ Benefit Ally</th>
+              <th>Surest Enhanced</th>
+              <th>Surest Standard</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hl-row"><td>Employee Only</td><td>$69.78/semi-mo</td><td>$0.00/semi-mo</td><td>$0.00/semi-mo</td></tr>
+            <tr><td>Employee + Spouse</td><td>$352.44/semi-mo</td><td>$197.64/semi-mo</td><td>$86.25/semi-mo</td></tr>
+            <tr><td>Employee + Child(ren)</td><td>$165.17/semi-mo</td><td>$67.93/semi-mo</td><td>$0.00/semi-mo</td></tr>
+            <tr><td>Family</td><td>$655.29/semi-mo</td><td>$440.87/semi-mo</td><td>$287.47/semi-mo</td></tr>
+          </tbody>
+        </table>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+          <span class="pill pill-teal">UHC Choice Plus Network</span>
+          <span class="pill pill-teal">$0 Deductible on All Plans</span>
+          <span class="pill pill-teal">$0 Virtual Care on All Plans</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DENTAL -->
+    <div class="card">
+      <div class="card-accent accent-plum"></div>
+      <div style="padding-left:8px">
+        <div class="card-icon icon-plum">🦷</div>
+        <h3>Dental Insurance &mdash; UHC</h3>
+        <p>PPO plans with or without child orthodontia. National Option PPO 30 network. No waiting period for major services.</p>
+        <table class="rates-table">
+          <thead>
+            <tr><th>Coverage Level</th><th>Standard (semi-mo)</th><th>w/ Ortho (semi-mo)</th></tr>
+          </thead>
+          <tbody>
+            <tr class="hl-row"><td>Employee Only</td><td>$0.00</td><td>$7.11</td></tr>
+            <tr><td>Employee + Spouse</td><td>$13.94</td><td>$28.39</td></tr>
+            <tr><td>Employee + Child(ren)</td><td>$15.47</td><td>$33.52</td></tr>
+            <tr><td>Family</td><td>$32.27</td><td>$59.70</td></tr>
+          </tbody>
+        </table>
+        <span class="pill pill-plum">100% Preventive Coverage</span>
+      </div>
+    </div>
+
+    <!-- VISION -->
+    <div class="card">
+      <div class="card-accent accent-amber"></div>
+      <div style="padding-left:8px">
+        <div class="card-icon icon-amber">👓</div>
+        <h3>Vision Insurance &mdash; UHC</h3>
+        <p>Annual exams + materials covered with a <strong>$10 copay</strong>. Frames or contacts up to <strong>$130 allowance</strong> every 12 months. Warby Parker is exclusively in-network.</p>
+        <table class="rates-table">
+          <thead>
+            <tr><th>Coverage Level</th><th>Employee Cost (semi-mo)</th></tr>
+          </thead>
+          <tbody>
+            <tr class="hl-row"><td>Employee Only</td><td>$0.00</td></tr>
+            <tr><td>Employee + Spouse</td><td>$2.72</td></tr>
+            <tr><td>Employee + Child(ren)</td><td>$3.66</td></tr>
+            <tr><td>Family</td><td>$7.05</td></tr>
+          </tbody>
+        </table>
+        <span class="pill pill-amber">12-Month Benefit Cycle</span>
+      </div>
+    </div>
+
+    <!-- FSA -->
+    <div class="card">
+      <div class="card-accent accent-red"></div>
+      <div style="padding-left:8px">
+        <div class="card-icon icon-red">💊</div>
+        <h3>Flexible Spending Account &mdash; iSolved</h3>
+        <p>Reduce your tax bill with pre-tax payroll deductions. Grace period through <strong>March 15, 2027</strong>. Re-enrollment required annually.</p>
+        <table class="rates-table">
+          <thead>
+            <tr><th>Account Type</th><th>Annual Max</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Healthcare FSA</td><td>$3,400/year</td></tr>
+            <tr><td>Dependent Care FSA</td><td>$7,500/year</td></tr>
+          </tbody>
+        </table>
+        <span class="pill pill-red">Employee Funded / Pre-Tax</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FINANCIAL BENEFITS -->
+<div class="container">
+  <span class="section-eyebrow">Financial Security</span>
+  <h2 class="section-title">Build Your Future With Us</h2>
+
+  <div class="grid grid-3">
+
+    <div class="card">
+      <div class="card-accent accent-teal"></div>
+      <div style="padding-left:8px">
+        <div class="card-icon icon-teal">💰</div>
+        <h3>401(k) Plan &mdash; ADP</h3>
+        <p>Save pre-tax or Roth (after-tax) up to the IRS annual maximum. <strong>Deque matches up to 3%</strong> of your contributions.</p>
+        <span class="pill pill-teal">Employee + Employer Funded</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent accent-plum"></div>
+      <div style="padding-left:8px">
+        <div class="card-icon icon-plum">📈</div>
+        <h3>Financial Planning Services</h3>
+        <p>Free personalized financial planning through Deque's partnership with <strong>Merrill Lynch</strong>. Your financial future, sorted &mdash; at no cost to you.</p>
+        <span class="pill pill-plum">100% Employer Paid</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent accent-amber"></div>
+      <div style="padding-left:8px">
+        <div class="card-icon icon-amber">🛡️</div>
+        <h3>Life &amp; AD&amp;D Insurance &mdash; UHC</h3>
+        <p>Coverage worth <strong>1x your annual salary</strong>, up to $100,000 &mdash; fully paid by Deque. Optional voluntary life insurance available for you and your dependents.</p>
+        <span class="pill pill-amber">100% Employer Paid</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent accent-red"></div>
+      <div style="padding-left:8px">
+        <div class="card-icon icon-red">🩺</div>
+        <h3>Short-Term Disability &mdash; UHC</h3>
+        <p>If unable to work, receive <strong>60% of gross monthly earnings</strong> after a 7-day waiting period &mdash; up to $1,500/week for up to 13 weeks.</p>
+        <span class="pill pill-red">100% Employer Paid</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent accent-teal"></div>
+      <div style="padding-left:8px">
+        <div class="card-icon icon-teal">🔒</div>
+        <h3>Long-Term Disability &mdash; UHC</h3>
+        <p>For extended absences, receive <strong>60% of gross monthly earnings</strong> after a 90-day elimination period &mdash; up to $6,000/month.</p>
+        <span class="pill pill-teal">100% Employer Paid</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- GROWTH & WELLBEING -->
+<div class="container">
+  <span class="section-eyebrow">Growth &amp; Wellbeing</span>
+  <h2 class="section-title">Invest in You</h2>
+
+  <div class="grid grid-3">
+
+    <div class="card">
+      <div class="card-accent accent-plum"></div>
+      <div style="padding-left:8px">
+        <div class="card-icon icon-plum">📚</div>
+        <h3>Professional Development</h3>
+        <p>Deque reimburses full-time employees for <strong>work-related courses and ongoing education</strong>. Get manager approval and keep growing.</p>
+        <span class="pill pill-plum">100% Employer Paid</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent accent-teal"></div>
+      <div style="padding-left:8px">
+        <div class="card-icon icon-teal">💬</div>
+        <h3>Employee Assistance Program</h3>
+        <p>Free, <strong>confidential counseling</strong> for you and your dependents &mdash; covering stress, legal questions, relationships, finances, bereavement, and more.</p>
+        <span class="pill pill-teal">100% Employer Paid</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent accent-amber"></div>
+      <div style="padding-left:8px">
+        <div class="card-icon icon-amber">🤝</div>
+        <h3>Employee Referral Program</h3>
+        <p>Know someone great? Refer them and earn a <strong>$4,000 bonus</strong> once they've been with us for 3 months.</p>
+        <span class="pill pill-amber">100% Employer Paid</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent accent-red"></div>
+      <div style="padding-left:8px">
+        <div class="card-icon icon-red">🧘</div>
+        <h3>Healthy Work-Life Balance</h3>
+        <p>Remote and flexible work, <strong>One Pass Select</strong> gym discounts, free wellness workshops, free will and trust services, Bridge2Health disability support, and LifeMart and BenefitHub discounts.</p>
+        <span class="pill pill-red">100% Employer Paid</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-accent accent-plum"></div>
+      <div style="padding-left:8px">
+        <div class="card-icon icon-plum">🎁</div>
+        <h3>New Hire Welcome Package</h3>
+        <p>New hires receive a <strong>Deque laptop</strong>, welcome swag box, Crucial Conversations course, EOS Traction books, and access to Deque University accessibility courses.</p>
+        <span class="pill pill-plum">100% Employer Paid</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p style="max-width:700px; margin-left:auto; margin-right:auto;">New employees are eligible for insurance benefits starting on their hire date. Benefits may be amended at Deque's discretion. Please refer to official plan documents for full details.</p>
+  <p style="margin-top:14px">Email <a href="/cdn-cgi/l/email-protection#442c360420213531216a272b29"><span class=
